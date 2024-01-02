@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* island-green - #2BAE66 */
+/* White - #FCF6F5 */
+
+body{
+    background-color: #FCF6F5;
+}
+
+.rs-message-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 0.5rem;
+}
