@@ -16,3 +16,8 @@ body{
     flex-direction: row-reverse;
     padding: 0.5rem;
 }
+
+.listing-slideimage{
+    width: 70%;
+    height: 70%;
+}

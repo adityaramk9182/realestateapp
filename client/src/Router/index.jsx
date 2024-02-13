@@ -6,6 +6,9 @@ import SignUp from '../pages/SignUp'
 import Profile from '../pages/Profile'
 import Layout from '../components/Layout'
 import ProtectedRoute from '../components/ProtectedRoute'
+import CreateListing from '../pages/CreateListing'
+import UpdateListing from '../pages/UpdateListing'
+import Listing from '../pages/Listing'
 
 
 export const router = createBrowserRouter(createRoutesFromElements(
@@ -14,8 +17,11 @@ export const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/about' element={<About/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/listing/:id' element={<Listing/>}/>
         <Route element={<ProtectedRoute/>}>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/createlisting' element={<CreateListing/>}/>
+        <Route path='/updatelisting/:id' element={<UpdateListing/>}/>
         </Route>
     </Route>
 ))
