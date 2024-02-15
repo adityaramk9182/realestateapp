@@ -1,17 +1,42 @@
 import React from 'react'
 import { BsSearch } from "react-icons/bs";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
 const Header = () => {
   const [searchValue, setSearchValue] = React.useState('');
+  const [searchedListings, setSearchedListings] = React.useState([]);
+  const [error, setError] = React.useState('');
   const {currentUser} = useSelector(state => state.auth);
-  
-  console.log(currentUser)
+  const navigate = useNavigate();
 
-  const handleOnChange = (val) => {
-    setSearchValue(val)
+  const handleSearchListing = async(e) => {
+    e.preventDefault();
+    try{
+
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('searchTerm', searchValue);
+      const searchQuery = urlParams.toString();
+      navigate(`/search?${searchQuery}`);
+      // const res = await fetch(`/api/v1/listing/all-listings?searchTerm=${searchValue}`);
+      // const data = await res.json();
+      // if(data.success === false){
+      //   setError(data.message);
+      // }
+      // setSearchedListings(data.Listings)
+    }catch(err){
+      console.log(err)
+    }
   }
+
+  React.useEffect(()=>{
+    const urlParams = new URLSearchParams(location.search);
+    const searchTerm = urlParams.get('searchTerm');
+    console.log(searchTerm)
+    if(searchTerm){
+      setSearchValue(searchTerm);
+    }
+  },[location.search]);
 
   return (
     <header className='bg-[#2BAE66] shadow-md'>
@@ -25,9 +50,9 @@ const Header = () => {
       </h1>
       </Link>
 
-      <form className='bg-slate-100 p-3 rounded-lg'>
-        <input className='bg-transparent focus:outline-none w-24 sm:w-64' type='text' placeholder='search...' onChange={e=>handleOnChange(e.target.value)}/>
-        <button><BsSearch className='size-5 text-[#2BAE66]'/></button>
+      <form className='bg-slate-100 p-3 rounded-lg' onSubmit={handleSearchListing}>
+        <input className='bg-transparent focus:outline-none w-24 sm:w-64' type='text' placeholder='search...' value={searchValue} onChange={e=>setSearchValue(e.target.value)}/>
+        <button type='submit'><BsSearch className='size-5 text-[#2BAE66]'/></button>
       </form>
 
       <ul className='flex gap-4'>

@@ -9,7 +9,7 @@ import ProtectedRoute from '../components/ProtectedRoute'
 import CreateListing from '../pages/CreateListing'
 import UpdateListing from '../pages/UpdateListing'
 import Listing from '../pages/Listing'
-
+import SearchListings from '../pages/searchListings'
 
 export const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
@@ -18,6 +18,7 @@ export const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/listing/:id' element={<Listing/>}/>
+        <Route path='/search' element={<SearchListings/>}/>
         <Route element={<ProtectedRoute/>}>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/createlisting' element={<CreateListing/>}/>
