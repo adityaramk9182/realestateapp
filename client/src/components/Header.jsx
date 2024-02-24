@@ -5,15 +5,12 @@ import {useSelector} from 'react-redux'
 
 const Header = () => {
   const [searchValue, setSearchValue] = React.useState('');
-  const [searchedListings, setSearchedListings] = React.useState([]);
-  const [error, setError] = React.useState('');
   const {currentUser} = useSelector(state => state.auth);
   const navigate = useNavigate();
 
   const handleSearchListing = async(e) => {
     e.preventDefault();
     try{
-
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set('searchTerm', searchValue);
       const searchQuery = urlParams.toString();
@@ -67,7 +64,7 @@ const Header = () => {
           {
             currentUser ? 
             (<img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile'/>) :
-            (<li className='hidden sm:inline text-[#FCF6F5] hover:underline font-semibold'>Login</li>)
+            (<li className='text-[#FCF6F5] hover:underline font-semibold'>Login</li>)
           }
           </Link>
       </ul>

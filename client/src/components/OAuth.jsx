@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { signInSuccess } from '../redux/user.slice';
+import { signInSuccess , signInStarts, signInFailed} from '../redux/user.slice';
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth'
 import { app } from '../firebase';
 
@@ -9,6 +9,7 @@ const OAuth = () => {
 
     const handleGoogleClick = async() => {
         try{
+            dispatch(signInStarts());
             const provider = new GoogleAuthProvider();
             const auth = getAuth(app);
             
@@ -25,8 +26,10 @@ const OAuth = () => {
                 avatar:result.user.photoURL
               })
             })
-
             const data = await res.json();
+            if(data.success === false){
+              dispatch(signInFailed({message:data.message}))
+            }
             dispatch(signInSuccess(data))
         }catch(err){
             console.log(err)

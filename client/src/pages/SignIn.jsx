@@ -29,7 +29,6 @@ const SignIn = () => {
         },
         body:JSON.stringify(formData)
       });
-  
       const data = await res.json();
       if(data.success === false){
         dispatch(signInFailed({message:data.message}))
@@ -50,7 +49,7 @@ const SignIn = () => {
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <input className='border p-3 rounded-lg outline-none' id='email' type="email" placeholder='email' onChange={handleOnChange}/>
         <input className='border p-3 rounded-lg outline-none' id='password' type="text" placeholder='password' onChange={handleOnChange}/>
-        {response.includes('Authentication') ? <Message className='bg-[#FCF6F5] text-[#2BAE66] font-semibold' type='success' closable>{response}</Message> : 
+        {response.includes('Authentication Successfull') ? <Message className='bg-[#FCF6F5] text-[#2BAE66] font-semibold' type='success' closable>{response}</Message> : 
         response.includes('INVALID PASSWORD') || response.includes('NOT FOUND') ? <Message className='bg-[#FCF6F5] text-red-600 font-semibold' type='error' closable>{response}</Message> : null
         }
         <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95' disabled={loading} type='submit'>{loading ? 'Loading..' : 'Sign in'}</button>
