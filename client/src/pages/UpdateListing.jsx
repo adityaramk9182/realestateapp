@@ -33,7 +33,7 @@ const UpdateListing = () => {
   console.log(formData)
 
   const handleOnChange = (e) => {
-    if(e.target.id === 'sell' || e.target.id === 'rent'){
+    if(e.target.id === 'sale' || e.target.id === 'rent'){
       setFormData({...formData, type:e.target.id});
     }
 
@@ -141,12 +141,12 @@ const UpdateListing = () => {
         <form className='flex flex-col sm:flex-row gap-4' onSubmit={handleFormSubmit}>
           <div className='flex flex-col gap-4 flex-1'>
             <input className='border p-3 rounded-lg outline-none' id='name' type="text" value={formData.name} placeholder='name' maxLength={62} minLength={10} onChange={handleOnChange} required/>
-            <textarea className='border p-3 rounded-lg outline-none' id='description' type="text" value={formData.description} placeholder='description' onChange={handleOnChange} required/>
+            <textarea className='border p-3 rounded-lg outline-none' id='description' cols="30" rows="5" value={formData.description} placeholder='description' onChange={handleOnChange} required/>
             <input className='border p-3 rounded-lg outline-none' id='address' type="text" value={formData.address} placeholder='address' onChange={handleOnChange} required/>
             <div className='flex gap-6 flex-wrap'>
               <div className="flex gap-2">
-                <input type="checkbox" id='sell' className='w-5' checked={formData.type === 'sell'} onChange={handleOnChange}/>
-                <span>Sell</span>
+                <input type="checkbox" id='sale' className='w-5' checked={formData.type === 'sale'} onChange={handleOnChange}/>
+                <span>Sale</span>
               </div>
               <div className="flex gap-2">
                 <input type="checkbox" id='rent' className='w-5' checked={formData.type === 'rent'} onChange={handleOnChange}/>

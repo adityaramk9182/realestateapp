@@ -47,7 +47,7 @@ const SignIn = () => {
   }
 
   return (
-    <React.Fragment>
+    <main className='signinsignupform'>
     <div className='p-3 max-w-lg mx-auto mt-20 bg-[#2BAE66] border rounded-lg'>
       <h1 className='text-2xl text-[#FCF6F5] text-center font-semibold my-7'>Sign In</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
@@ -64,7 +64,7 @@ const SignIn = () => {
         <span className='text-[#FCF6F5] hover:underline'><Link to='/signup'>signup</Link></span>
       </div>
     </div>
-    </React.Fragment>
+    </main>
   )
 }
 

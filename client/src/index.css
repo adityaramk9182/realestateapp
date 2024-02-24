@@ -18,9 +18,20 @@ body{
 }
 
 .swiper {
-    width: 100vw;
+    width: 100%;
     height: 50vh;
 }
+
+.signinsignupform{
+    width: 100%;
+    height: 70vh;
+}
+
+.aboutpage{
+    width: 100%;
+    height: 90vh;
+}
+
 
 /* .listing-slideimage{
     width: 70%;

@@ -2,10 +2,13 @@ const express = require('express')
 const dotEnv = require('dotenv')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const path = require('path')
 
 const AuthRoutes = require('./routes/auth.route')
 const UserRoutes = require('./routes/user.route')
 const ListingRoutes = require('./routes/listing.route')
+
+const __dirname = path.resolve()
 
 const app = express()
 
@@ -25,6 +28,12 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 app.use('/api/v1/auth', AuthRoutes)
 app.use('/api/v1/user', UserRoutes)
 app.use('/api/v1/listing', ListingRoutes)
+
+app.use(express.static(path.join(__dirname, '/client/dist')))
+
+app.use('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
+})
 
 //middleware for error handeling
 app.use((err, req, res, next)=>{

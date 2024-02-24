@@ -18,7 +18,7 @@ const Profile = () => {
   const {currentUser, loading, response} = useSelector(state => state.auth);
   const dispatch = useDispatch()
 
-  console.log(formData)
+  console.log(listings)
 
   const handleOnChange = (e) => {
     setFormData({
