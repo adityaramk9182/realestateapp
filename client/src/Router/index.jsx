@@ -9,7 +9,7 @@ import ProtectedRoute from '../components/ProtectedRoute'
 import CreateListing from '../pages/CreateListing'
 import UpdateListing from '../pages/UpdateListing'
 import Listing from '../pages/Listing'
-import SearchListings from '../pages/searchListings'
+import SearchListings from '../pages/SearchListings'
 
 export const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
