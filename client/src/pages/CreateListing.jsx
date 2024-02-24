@@ -26,9 +26,6 @@ const CreateListing = () => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-
-  console.log(formData)
-
   const handleOnChange = (e) => {
     if(e.target.id === 'sale' || e.target.id === 'rent'){
       setFormData({...formData, type:e.target.id});
@@ -74,7 +71,6 @@ const CreateListing = () => {
         "state_changed",
         (snapshot)=>{
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-          console.log(`Uploading images ${progress}`);
         },
         (err)=>{
           reject(err);

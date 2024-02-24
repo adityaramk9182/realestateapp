@@ -18,8 +18,6 @@ const Profile = () => {
   const {currentUser, loading, response} = useSelector(state => state.auth);
   const dispatch = useDispatch()
 
-  console.log(listings)
-
   const handleOnChange = (e) => {
     setFormData({
       ...formData,
@@ -40,8 +38,6 @@ const Profile = () => {
       });
   
       const data = await res.json();
-
-      console.log(data)
 
       if(data.success === false){
         dispatch(profileUpdateFailed({message:data.message}))
@@ -74,7 +70,6 @@ const Profile = () => {
       })
 
       const data = await res.json();
-      console.log(data)
 
       if(data.success === false){
         dispatch(deleteUserFailed(data.message));
@@ -116,7 +111,6 @@ const Profile = () => {
     },
     ()=>{
       getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-        console.log(downloadUrl)
         setFormData({...formData, avatar:downloadUrl})
       })
     })
@@ -129,10 +123,8 @@ const Profile = () => {
       });
       const data = await res.json();
       if(data.success === false){
-        console.log(data.message)
         return;
       }
-      console.log(data)
 
       setListings((prev)=>prev.filter(list => list._id !== id))
     }catch(err){

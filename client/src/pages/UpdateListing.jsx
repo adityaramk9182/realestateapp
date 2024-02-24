@@ -29,9 +29,6 @@ const UpdateListing = () => {
 
   const params = useParams();
 
-
-  console.log(formData)
-
   const handleOnChange = (e) => {
     if(e.target.id === 'sale' || e.target.id === 'rent'){
       setFormData({...formData, type:e.target.id});
@@ -77,7 +74,6 @@ const UpdateListing = () => {
         "state_changed",
         (snapshot)=>{
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-          console.log(`Uploading images ${progress}`);
         },
         (err)=>{
           reject(err);
@@ -124,9 +120,6 @@ const UpdateListing = () => {
         try{
             const res = await fetch(`/api/v1/listing/getlisting/${params.id}`);
             const data = await res.json();
-            if(data.success === false){
-                console.log('Fetch Error')
-            }
             setFormData(data);
         }catch(err){
             console.log(err)

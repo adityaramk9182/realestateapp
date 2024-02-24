@@ -17,10 +17,6 @@ const SearchListings = () => {
   const [showmore, SetShowMore] = React.useState(false)
   const navigate = useNavigate();
 
-  console.log(listings)
-
-  console.log(filterSearch)
-
   const handleOnchange = (e) => {
     if(e.target.id === 'all' || e.target.id === 'rent' || e.target.id === 'sale'){
       setFilterSearch({...filterSearch, type : e.target.value});

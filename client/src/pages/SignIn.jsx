@@ -11,8 +11,6 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const {response, loading} = useSelector(state => state.auth);
 
-  console.log(response)
-
   const handleOnChange = (e) => {
     setFormdata({
       ...formData,
@@ -33,7 +31,6 @@ const SignIn = () => {
       });
   
       const data = await res.json();
-      console.log(data)
       if(data.success === false){
         dispatch(signInFailed({message:data.message}))
       }

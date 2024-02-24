@@ -32,7 +32,6 @@ const Header = () => {
   React.useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
     const searchTerm = urlParams.get('searchTerm');
-    console.log(searchTerm)
     if(searchTerm){
       setSearchValue(searchTerm);
     }
@@ -68,7 +67,7 @@ const Header = () => {
           {
             currentUser ? 
             (<img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile'/>) :
-            (<li className='hidden sm:inline text-[#FCF6F5] hover:underline'>Login</li>)
+            (<li className='hidden sm:inline text-[#FCF6F5] hover:underline font-semibold'>Login</li>)
           }
           </Link>
       </ul>
