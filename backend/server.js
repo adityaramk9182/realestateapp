@@ -8,7 +8,7 @@ const AuthRoutes = require('./routes/auth.route')
 const UserRoutes = require('./routes/user.route')
 const ListingRoutes = require('./routes/listing.route')
 
-const __dirname = path.resolve()
+const __dirName = path.resolve()
 
 const app = express()
 
@@ -29,10 +29,10 @@ app.use('/api/v1/auth', AuthRoutes)
 app.use('/api/v1/user', UserRoutes)
 app.use('/api/v1/listing', ListingRoutes)
 
-app.use(express.static(path.join(__dirname, '/client/dist')))
+app.use(express.static(path.join(__dirName, '/client/dist')))
 
 app.use('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
+    res.sendFile(path.join(__dirName, 'client', 'dist', 'index.html'))
 })
 
 //middleware for error handeling
