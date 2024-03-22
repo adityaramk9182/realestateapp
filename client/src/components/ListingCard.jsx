@@ -4,10 +4,10 @@ import {useSelector} from 'react-redux'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const ListingCard = ({listing}) => {
-    const {currentUser} = useSelector(state => state.auth)
+    const {currentUser, token} = useSelector(state => state.auth);
     return (
         <main className='bg-white shadow-md  md:shadow-lg transition-shadow overflow-hidden rounded w-full sm:w-[330px]'>
-            <Link to={`${currentUser ? `/listing/${listing._id}` : `/signin`}`}>
+            <Link to={`${currentUser && token ? `/listing/${listing._id}` : `/signin`}`}>
                 <img className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-all duration-300' src={listing.imageUrls[0]} alt="listing"/>
                 <div className='flex flex-col gap-1 p-2 w-full'>
                 <h4 className='truncate text-lg font-semibold text-slate-900'>{listing.name}</h4>

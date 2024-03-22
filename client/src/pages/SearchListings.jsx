@@ -51,7 +51,7 @@ const SearchListings = () => {
     navigate(`/search?${searchParam}`)
   }
 
-  React.useState(()=>{
+  React.useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
     const searchTermUrl = urlParams.get('searchTerm');
     const typeUrl = urlParams.get('type');
@@ -129,7 +129,7 @@ const SearchListings = () => {
             />
           </div>
 
-          <div className="flex justify-start items-start gap-2">
+          <div className="flex flex-wrap justify-start items-start gap-3">
             <p>Type :</p>
             <div className="flex justify-center items-center gap-1">
               <input 
@@ -169,7 +169,7 @@ const SearchListings = () => {
             </div>
           </div>
 
-          <div className="flex justify-start items-start gap-2">
+          <div className="flex justify-start items-start gap-3">
             <p>Amenities :</p>
             <div className="flex justify-center items-center gap-1">
               <input 
@@ -191,7 +191,7 @@ const SearchListings = () => {
             </div>
           </div>
 
-          <div className="flex justify-start items-center gap-2">
+          <div className="flex justify-start items-center gap-3">
             <label>Sort By :</label>
             <select id="sort_order" defaultValue={'created_at_desc'} className="border rounded-md p-3" onChange={handleOnchange}>
               <option value="regularPrice_desc">Latest</option>

@@ -41,7 +41,7 @@ const userSignIn = async(req, res, next) => {
         const token = jwt.sign({id:existedUser._id}, process.env.JWT_SECRET_KEY);
 
         const {password:pass, ...rest} = existedUser._doc;
-        res.cookie('access_token', token, {httpOnly:true}).status(200).json({message:'Authentication Successfull', user:rest})
+        res.cookie('access_token', token, {httpOnly:true}).status(200).json({message:'Authentication Successfull', user:rest, token})
     }catch(err){
         next(err)
     }
