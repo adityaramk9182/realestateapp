@@ -56,7 +56,7 @@ const Listing = () => {
         (
             <Swiper navigation>
                 {
-                    listingData?.imageUrls.map((item)=>{
+                    listingData?.imageUrls?.map((item)=>{
                         return(
                             <SwiperSlide className='w-52' key={item}>
                             <div className='h-[550px]'

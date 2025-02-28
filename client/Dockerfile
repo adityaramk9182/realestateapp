@@ -1,0 +1,11 @@
+FROM node:19.5.0-alpine as build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:1.21-alpine
+COPY --from=build /app/build ./
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
